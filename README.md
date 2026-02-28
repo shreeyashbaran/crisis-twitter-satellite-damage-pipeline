@@ -91,7 +91,7 @@ Artifacts will be created locally (ignored by git):
 
 ---
 
-## What to highlight on your portfolio
+## Highlights
 
 - **Engineering:** robust TSV loading, image path resolver, label harmonization, dataset manifests, tiling, safe dataloaders for Windows.
 - **Modeling:** tweet-specialized transformers (BERTweet / Twitter-RoBERTa), ConvNeXt-Tiny for damage severity, U-Net for segmentation, late fusion.
