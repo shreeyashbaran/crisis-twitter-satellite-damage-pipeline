@@ -99,6 +99,11 @@ Artifacts will be created locally (ignored by git):
 
 ---
 
+## Topics
+**Multimodal**, **Disaster-response**, **NLP**, **Computer-Vision**, **Pytorch**, **Huggingface**, **unet**, **convnext**, **bertweet**, **satellite-imagery**, **remote-sensing**.
+
+---
+
 ## References
 
 - CrisisMMD v2.0: https://crisisnlp.qcri.org/crisismmd.html  
