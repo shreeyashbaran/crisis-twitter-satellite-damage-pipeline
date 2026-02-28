@@ -1,0 +1,129 @@
+============================================================
+DATASET ACCESS & DOWNLOAD INSTRUCTIONS
+Project: Multi-Modal Disaster Damage Assessment
+============================================================
+
+This project uses TWO public datasets:
+
+1. CrisisMMD (Twitter-based multi-modal crisis dataset)
+2. BRIGHT (Building Damage Assessment from Satellite Imagery)
+
+Due to licensing and storage constraints, the datasets are NOT included 
+inside the submitted ZIP file. Follow the instructions below to download 
+them and prepare them in the required folder structure.
+
+------------------------------------------------------------
+1. CRISIS-MMD DATASET
+------------------------------------------------------------
+
+Official repo:
+https://github.com/CrisisMMD/CrisisMMD
+
+Direct download:
+https://crisisnlp.qcri.org/crisismmd
+
+You need the following components:
+    • all_json/            (tweet metadata)
+    • image/               (tweet images)
+    • tsv/                 (labels for informativeness, humanitarian category)
+
+Place them in:
+
+CrisisMMD/
+    all_json/
+    image/
+    tsv/
+
+NOTE:
+- Some TSV files have non-UTF8 characters. The notebook already handles 
+  encoding gracefully.
+- No modifications are required other than placing the folders correctly.
+
+------------------------------------------------------------
+2. BRIGHT DATASET
+------------------------------------------------------------
+
+Official BRIGHT release:
+https://zenodo.org/records/15385983
+
+GitHub Link:
+https://github.com/ChenHongruixuan/BRIGHT
+
+Download the following subsets:
+    • post-event/          (post-disaster satellite imagery)
+    • target/              (pixel-level building damage masks)
+    • (optional) pre-event/  [Our project does NOT require pre-event images]
+
+Place them in:
+
+BRIGHT/
+    post-event/
+    target/
+    pre-event/   (optional — many scenes do not include pre-images)
+
+Total size: approx. 20–25 GB depending on mirrors.
+
+------------------------------------------------------------
+3. VERIFY FOLDER STRUCTURE (IMPORTANT)
+------------------------------------------------------------
+
+Your project root should look like this:
+
+ProjectRoot/
+    CrisisMMD/
+        all_json/
+        image/
+        tsv/
+
+    BRIGHT/
+        post-event/
+        target/
+        pre-event/   (optional)
+
+    code/
+    models/
+    logs/
+    sample_outputs/
+    README.md
+    …
+
+If the datasets are not placed exactly this way, the notebooks will not 
+be able to locate the files and preprocessing will fail.
+
+------------------------------------------------------------
+4. RUNNING THE NOTEBOOKS AFTER DOWNLOADING
+------------------------------------------------------------
+
+CrisisMMD notebook:
+    • Expects "CrisisMMD/" folder directly under project root.
+    • Will parse JSON and TSV metadata.
+    • Preprocessing will automatically skip corrupt files.
+
+BRIGHT notebook:
+    • Expects "BRIGHT/" folder directly under project root.
+    • Will build a manifest of post-event + label files.
+    • Will generate tiles automatically.
+
+------------------------------------------------------------
+5. STORAGE WARNING
+------------------------------------------------------------
+
+BRIGHT imagery and generated tile artifacts can exceed 30–40 GB 
+depending on your setup. The ZIP submission intentionally excludes these.
+
+If you need to reduce storage:
+    • Delete artifacts_stage2/ after training.
+    • Keep only the final model checkpoint and summary CSV.
+
+------------------------------------------------------------
+6. CONTACT / TROUBLESHOOTING
+------------------------------------------------------------
+
+If folders are not recognized:
+    • Verify that ".tif" files exist in post-event/ and target/.
+    • Check paths printed in the first cell of each notebook.
+    • Ensure no hidden system folders were created during extraction.
+
+If decoding issues appear in CrisisMMD TSVs:
+    • The notebook contains a fallback UTF-8 handler.
+    • No manual edits are needed.

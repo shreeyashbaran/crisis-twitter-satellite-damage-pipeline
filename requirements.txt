@@ -1,0 +1,28 @@
+# Core
+numpy
+pandas
+scikit-learn
+matplotlib
+tqdm
+pillow
+
+# Deep learning
+torch
+torchvision
+torchaudio
+timm
+
+# NLP / Transformers
+transformers
+datasets
+evaluate
+
+# Remote sensing / I/O
+tifffile
+
+# Notebooks
+jupyter
+ipywidgets
+
+# Optional (for BERTweet emoji normalization)
+emoji==0.6.0
